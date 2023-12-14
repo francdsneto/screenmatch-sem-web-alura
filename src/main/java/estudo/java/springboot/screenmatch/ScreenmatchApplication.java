@@ -1,11 +1,17 @@
 package estudo.java.springboot.screenmatch;
 
+import estudo.java.springboot.screenmatch.model.DadosEpisodio;
 import estudo.java.springboot.screenmatch.model.DadosSerie;
+import estudo.java.springboot.screenmatch.model.DadosTemporadas;
+import estudo.java.springboot.screenmatch.principal.Principal;
 import estudo.java.springboot.screenmatch.service.ConsumoAPI;
 import estudo.java.springboot.screenmatch.service.ConverteDados;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {
@@ -18,19 +24,9 @@ public class ScreenmatchApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		var consumoApi = new ConsumoAPI();
-		/**
-		 * Endereco
-		 * "https://www.omdbapi.com/?t=loki&apikey=567c7693"
-		 */
-		String endereco = "https://www.omdbapi.com/?t=loki&apikey=567c7693";
-		var json = consumoApi.obterDados(endereco);
-		System.out.println(json);
+		Principal principal = new Principal();
+		principal.exibeMenu();
 
-		ConverteDados conversor = new ConverteDados();
-
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
 	}
 
 }
