@@ -82,4 +82,12 @@ public class SerieService {
     public List<SerieDTO> obterPorCategoria(String categoria) {
         return this.converteParaDTO(this.repositorio.findByGenero(Categoria.fromPortugues(categoria)));
     }
+
+    public List<EpisodioDTO> obterTop5EpisodiosDaSerie(Long id) {
+        return this.repositorio
+                .obterTop5EpisodiosDaSerie(id)
+                .stream()
+                .map(e -> new EpisodioDTO(e.getTemporada(),e.getTitulo(),e.getNumeroEpisodio()))
+                .toList();
+    }
 }

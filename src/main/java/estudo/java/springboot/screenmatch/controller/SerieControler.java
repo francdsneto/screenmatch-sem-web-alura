@@ -4,10 +4,7 @@ import estudo.java.springboot.screenmatch.dto.EpisodioDTO;
 import estudo.java.springboot.screenmatch.dto.SerieDTO;
 import estudo.java.springboot.screenmatch.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,6 +48,11 @@ public class SerieControler {
     @GetMapping("/categoria/{categoria}")
     public List<SerieDTO> obterPorCategoria(@PathVariable String categoria) {
         return serieService.obterPorCategoria(categoria);
+    }
+
+    @GetMapping("/{id}/temporadas/top")
+    public List<EpisodioDTO> obterTop5EpisodiosDaSerie(@PathVariable Long id) {
+        return serieService.obterTop5EpisodiosDaSerie(id);
     }
 
 }

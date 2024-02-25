@@ -52,4 +52,7 @@ public interface iSerieRepository extends JpaRepository<Serie,Long> {
 
     @Query("SELECT e FROM Serie s LEFT JOIN s.episodios e WHERE s.id = :id AND e.temporada = :numero")
     List<Episodio> obterEpisodiosPorTemporada(Long id, Long numero);
+
+    @Query("SELECT e FROM Serie s LEFT JOIN s.episodios e WHERE s.id = :id ORDER BY e.avaliacao DESC LIMIT 5")
+    List<Episodio> obterTop5EpisodiosDaSerie(Long id);
 }
