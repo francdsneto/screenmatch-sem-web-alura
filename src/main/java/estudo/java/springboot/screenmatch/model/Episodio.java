@@ -18,6 +18,7 @@ public class Episodio {
     private Integer numeroEpisodio;
     private Double avaliacao;
     private LocalDate dataLancamento;
+
     @ManyToOne(targetEntity = Serie.class)
     @JoinColumn(name = "serie_id")
     private Serie serie;
